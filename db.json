@@ -1,0 +1,39 @@
+{
+  "wallets": [
+    {
+      "_id": "1",
+      "walletName": "Savings Wallet",
+      "currentBalance": 1500.75,
+      "type": "Savings",
+      "userId": "user123"
+    },
+    {
+      "_id": "2",
+      "walletName": "Checking Wallet",
+      "currentBalance": 500.25,
+      "type": "Checking",
+      "userId": "user123"
+    },
+    {
+      "_id": "3",
+      "walletName": "Investment Wallet",
+      "currentBalance": 10000.0,
+      "type": "Investment",
+      "userId": "user456"
+    },
+    {
+      "_id": "4",
+      "walletName": "Travel Wallet",
+      "currentBalance": 200.0,
+      "type": "Savings",
+      "userId": "user789"
+    }
+  ],
+  "user1": {
+    "_id": "user123",
+    "name": "string",
+    "email": "string",
+    "picture": "string",
+    "googleId": "string"
+  }
+}
