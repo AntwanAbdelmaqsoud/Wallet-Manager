@@ -15,13 +15,14 @@ export default function HomePage() {
       return dataAsJson;
     };
     setdata(getUserData());
+    setRefreshToken(Cookies.get("refreshToken"));
   }, [refreshToken]);
 
   return (
     <div className="min-h-screen flex p-2 bg-[#F6F6F6]">
       <SideBar />
       <div className="p-2 text-3xl">
-        HomePage: {myCookie}
+        HomePage: {refreshToken}
         <br />
         Data:{" "}
         {data
