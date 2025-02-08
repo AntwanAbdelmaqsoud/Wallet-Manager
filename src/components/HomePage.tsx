@@ -3,7 +3,7 @@ import SideBar from "./SideBar";
 import { useEffect, useState } from "react";
 
 export default function HomePage() {
-  const myCookie = Cookies.get("refreshToken");
+  const [refreshToken, setRefreshToken] = useState(Cookies.get("refreshToken"));
   const [data, setdata] = useState<object | null>(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export default function HomePage() {
       return dataAsJson;
     };
     setdata(getUserData());
-  }, []);
+  }, [refreshToken]);
 
   return (
     <div className="min-h-screen flex p-2 bg-[#F6F6F6]">
