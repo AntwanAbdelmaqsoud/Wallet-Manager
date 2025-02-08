@@ -8,9 +8,9 @@ export default function HomePage() {
   useEffect(() => {
     const getUserData = async (refreshToken: string) => {
       const data = await fetch(
-        "wallet-manager-api-production.up.railway.app/api/sessions/me",
+        "https://wallet-manager-api-production.up.railway.app/api/sessions/me",
         {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
