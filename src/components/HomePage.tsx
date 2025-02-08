@@ -8,6 +8,14 @@ export default function HomePage() {
 
   useEffect(() => {
     const getUserData = async () => {
+      const checkCookie = () => {
+        return Cookies.get("refreshToken");
+      };
+
+      while (!checkCookie()) {
+        await new Promise((resolve) => setTimeout(resolve, 100)); // Wait 100ms before checking again
+      }
+
       const data = await fetch(
         "https://wallet-manager-api-production.up.railway.app/api/sessions/me"
       );
@@ -16,7 +24,7 @@ export default function HomePage() {
     };
     setdata(getUserData());
     setRefreshToken(Cookies.get("refreshToken"));
-  }, [refreshToken]);
+  }, []);
 
   return (
     <div className="min-h-screen flex p-2 bg-[#F6F6F6]">
