@@ -3,8 +3,8 @@ import { useSearchParams } from "react-router-dom";
 import SideBar from "./SideBar";
 
 export default function GoogleAuth() {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [code, setCode] = useState(searchParams.get("code"));
+  const [searchParams] = useSearchParams();
+  const [code] = useState(searchParams.get("code"));
   const [userName, setuserName] = useState<string | null>(null);
 
   useEffect(() => {
