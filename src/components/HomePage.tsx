@@ -4,9 +4,12 @@ import { useEffect, useState } from "react";
 
 export default function HomePage() {
   const myCookie = Cookies.get("refreshToken");
+  console.log(myCookie);
   const [data, setdata] = useState<object | null>(null);
+
   useEffect(() => {
     const getUserData = async (refreshToken: string) => {
+      document.cookie = `refreshToke=${refreshToken}; path=/; samesite=strict; secure`;
       const data = await fetch(
         "https://wallet-manager-api-production.up.railway.app/api/sessions/me",
         {
@@ -14,7 +17,7 @@ export default function HomePage() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ refreshToken }),
+          //   body: JSON.stringify({ refreshToken }),
           credentials: "include",
         }
       );
@@ -22,6 +25,7 @@ export default function HomePage() {
       return dataAsJson;
     };
     setdata(getUserData(myCookie!));
+    console.log(myCookie);
   }, [myCookie]);
 
   return (
