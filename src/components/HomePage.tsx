@@ -8,8 +8,7 @@ export default function HomePage() {
   const [data, setdata] = useState<object | null>(null);
 
   useEffect(() => {
-    const getUserData = async (refreshToken: string) => {
-      document.cookie = `refreshToke=${refreshToken}; path=/; samesite=strict; secure`;
+    const getUserData = async () => {
       const data = await fetch(
         "https://wallet-manager-api-production.up.railway.app/api/sessions/me",
         {
@@ -17,16 +16,15 @@ export default function HomePage() {
           headers: {
             "Content-Type": "application/json",
           },
-          //   body: JSON.stringify({ refreshToken }),
           credentials: "include",
         }
       );
       const dataAsJson = await data.json();
       return dataAsJson;
     };
-    setdata(getUserData(myCookie!));
+    setdata(getUserData());
     console.log(myCookie);
-  }, [myCookie]);
+  }, []);
 
   return (
     <div className="min-h-screen flex p-2 bg-[#F6F6F6]">
