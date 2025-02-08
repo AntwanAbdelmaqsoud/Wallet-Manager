@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import SideBar from "./SideBar";
 
 export default function GoogleAuth() {
-  const { code } = useParams<string>();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [code, setCode] = useState(searchParams.get("code"));
   const [userName, setuserName] = useState<string | null>(null);
 
   useEffect(() => {
@@ -28,15 +29,6 @@ export default function GoogleAuth() {
       <div className="p-2 text-3xl">
         HomePage: {userName}
         <br />
-        {/* Data:{" "}
-        {data
-          ? Object.entries(data).map(([key, value]) => (
-              <li key={key}>
-                <strong>{key}:</strong> {value}
-              </li>
-            ))
-          : ""}
-      </div> */}
       </div>
     </div>
   );
