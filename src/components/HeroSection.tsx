@@ -3,28 +3,6 @@ import heroImage2 from "@/assets/bg2.png";
 // import SignupModal from "./SignupModal";
 import { Button } from "./ui/button";
 
-const fetchUserSession = async () => {
-  try {
-    const res = await fetch(
-      "https://wallet-manager-api-production.up.railway.app/api/sessions/oauth/google",
-      {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Authorization: "Bearer ",
-        },
-      }
-    );
-
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.message || "Login failed");
-
-    console.log("✅ User logged in:", data);
-  } catch (error) {
-    console.error("❌ Error fetching session:", error);
-  }
-};
-
 const getGoogleLoginLink = async () => {
   const data = await fetch(
     "https://wallet-manager-api-production.up.railway.app/oauth/google"
@@ -34,14 +12,7 @@ const getGoogleLoginLink = async () => {
 };
 
 const googleLogin = async () => {
-  const oauthWindow = window.open(await getGoogleLoginLink(), "_self");
-
-  const checkPopupClosed = setInterval(() => {
-    if (oauthWindow?.closed) {
-      clearInterval(checkPopupClosed);
-      fetchUserSession();
-    }
-  }, 500);
+  window.open(await getGoogleLoginLink(), "_self");
 };
 
 const HeroSection = () => {
