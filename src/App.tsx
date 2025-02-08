@@ -6,6 +6,7 @@ import UserPage from "./components/UserPage";
 import HomePage from "./components/HomePage";
 import ContactPage from "./components/ContactPage";
 import AboutPage from "./components/AboutPage";
+import GoogleAuth from "./components/GoogleAuth";
 function App() {
   return (
     <Router>
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<HomePage />} />
+        <Route path="/google" element={<GoogleAuth />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/:userId" element={<UserPage />} />
