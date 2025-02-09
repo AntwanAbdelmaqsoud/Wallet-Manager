@@ -26,7 +26,8 @@ export default function GoogleAuth() {
   });
   useEffect(() => {
     if (data) {
-      setuserName(data.user.name);
+      setuserName(data.data.user.name);
+      console.log(data);
     }
   }, [data]);
   if (isError) return <div>Error: {error.message}</div>;
