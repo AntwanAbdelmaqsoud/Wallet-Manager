@@ -7,20 +7,25 @@ import HomePage from "./components/HomePage";
 import ContactPage from "./components/ContactPage";
 import AboutPage from "./components/AboutPage";
 import GoogleAuth from "./components/GoogleAuth";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/google" element={<GoogleAuth />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/:userId" element={<UserPage />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/google" element={<GoogleAuth />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/:userId" element={<UserPage />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </QueryClientProvider>
   );
 }
 
