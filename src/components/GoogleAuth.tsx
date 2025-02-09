@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import SideBar from "./SideBar";
 
 export default function GoogleAuth() {
   const [searchParams] = useSearchParams();
-  const [code] = useState(searchParams.get("code"));
-  const [userName, setuserName] = useState<string | null>(null);
-  const { isPending, isError, data, error } = useQuery({
-    queryKey: ["userData", code],
-    queryFn: async () => {
+  const [userName, setUserName] = useState<string | null>(null);
+
+  const { mutate, isPending, isError, error } = useMutation({
+    mutationFn: async (code: string) => {
       const response = await fetch(
         `https://wallet-manager-api-production.up.railway.app/oauth/google/login?code=${code}`,
         {
@@ -22,26 +21,28 @@ export default function GoogleAuth() {
       }
       return response.json();
     },
-    enabled: !!code,
+    onSuccess: (data) => {
+      setUserName(data.data.user.name);
+      console.log("User data:", data);
+    },
   });
+
   useEffect(() => {
-    if (data) {
-      setuserName(data.data.user.name);
-      console.log(data);
+    const code = searchParams.get("code");
+    if (code) {
+      mutate(code);
     }
-  }, [data]);
-  if (isError) return <div>Error: {error.message}</div>;
+  }, [searchParams, mutate]);
+
+  if (isPending) return <div>Loading...</div>;
+  if (isError) return <div>Error: {(error as Error).message}</div>;
+
   return (
     <div className="min-h-screen flex p-2 bg-[#F6F6F6]">
       <SideBar />
-      {isPending ? (
-        <div>Loading...</div>
-      ) : (
-        <div className="p-2 text-3xl">
-          HomePage: {userName}
-          <br />
-        </div>
-      )}
+      <div className="p-2 text-3xl">
+        {userName ? `Welcome, ${userName}!` : "HomePage"}
+      </div>
     </div>
   );
 }
