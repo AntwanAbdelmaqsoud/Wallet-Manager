@@ -3,27 +3,25 @@ import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import SideBar from "./SideBar";
 
-const fetchUserData = async (code: string) => {
-  const response = await fetch(
-    `https://wallet-manager-api-production.up.railway.app/oauth/google/login?code=${code}`,
-    {
-      method: "POST",
-      credentials: "include",
-    }
-  );
-  if (!response.ok) {
-    throw new Error("Failed to fetch user data");
-  }
-  return response.json();
-};
-
 export default function GoogleAuth() {
   const [searchParams] = useSearchParams();
   const [code] = useState(searchParams.get("code"));
   const [userName, setuserName] = useState<string | null>(null);
   const { isPending, isError, data, error } = useQuery({
     queryKey: ["userData", code],
-    queryFn: () => fetchUserData(code!),
+    queryFn: async () => {
+      const response = await fetch(
+        `https://wallet-manager-api-production.up.railway.app/oauth/google/login?code=${code}`,
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch user data");
+      }
+      return response.json();
+    },
     enabled: !!code,
   });
   useEffect(() => {
