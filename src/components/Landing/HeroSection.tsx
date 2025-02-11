@@ -1,19 +1,8 @@
 import heroImage from "@/assets/cc.png";
 import heroImage2 from "@/assets/bg2.png";
-// import SignupModal from "./SignupModal";
-import { Button } from "./ui/button";
-
-const getGoogleLoginLink = async () => {
-  const data = await fetch(
-    "https://wallet-manager-api-production.up.railway.app/oauth/google"
-  );
-  const pzpz = await data.json();
-  return pzpz.oauthUrl;
-};
-
-const googleLogin = async () => {
-  window.open(await getGoogleLoginLink(), "_self");
-};
+import { Button } from "../ui/button";
+import { FaGoogle } from "react-icons/fa";
+import { googleLogin } from "@/utils/utils";
 
 const HeroSection = () => {
   return (
@@ -29,13 +18,9 @@ const HeroSection = () => {
         <h3 className="sm:text-lg mt-6">
           Efficiently manage your wallets and boost productivity
         </h3>
-        {/* <SignupModal /> */}
         <Button variant={"destructive"} className="mt-2" onClick={googleLogin}>
-          Sign up
+          Sign up <FaGoogle />
         </Button>
-        {/* <Button variant="destructive" className="mt-6">
-          Sign Up
-        </Button> */}
       </div>
       <img
         src={heroImage}

@@ -1,39 +1,15 @@
 {
-  "wallets": [
-    {
-      "_id": "1",
-      "walletName": "Savings Wallet",
-      "currentBalance": 1500.75,
-      "type": "Savings",
-      "userId": "user123"
+  "data": {
+    "user": {
+      "_id": "19f2e118-25c0-4a39-8f57-6a3b47436fdb",
+      "email": "antwanmekhael@std.mans.edu.eg",
+      "__v": 0,
+      "createdAt": "2025-02-08T18:54:21.448Z",
+      "googleId": "106277462315154360318",
+      "name": "Antwan Mekhael",
+      "picture": "https://lh3.googleusercontent.com/a/ACg8ocJlM0K2_Ll2PUq5u7ayialR5Vdsuy8WaEdYif9hWfo8QPAUvNg=s96-c",
+      "updatedAt": "2025-02-11T15:46:09.597Z"
     },
-    {
-      "_id": "2",
-      "walletName": "Checking Wallet",
-      "currentBalance": 500.25,
-      "type": "Checking",
-      "userId": "user123"
-    },
-    {
-      "_id": "3",
-      "walletName": "Investment Wallet",
-      "currentBalance": 10000.0,
-      "type": "Investment",
-      "userId": "user456"
-    },
-    {
-      "_id": "4",
-      "walletName": "Travel Wallet",
-      "currentBalance": 200.0,
-      "type": "Savings",
-      "userId": "user789"
-    }
-  ],
-  "user1": {
-    "_id": "user123",
-    "name": "string",
-    "email": "string",
-    "picture": "string",
-    "googleId": "string"
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnb29nbGVJZCI6IjEwNjI3NzQ2MjMxNTE1NDM2MDMxOCIsImVtYWlsIjoiYW50d2FubWVraGFlbEBzdGQubWFucy5lZHUuZWciLCJ1c2VySWQiOiIxOWYyZTExOC0yNWMwLTRhMzktOGY1Ny02YTNiNDc0MzZmZGIiLCJpYXQiOjE3MzkyODg3NjksImV4cCI6MTczOTMwNjc2OX0.Bx_91UI_LG2KHyXwgQJVeDhcmaQRMxv2FCIpYvGcuv8"
   }
 }

@@ -1,6 +1,6 @@
-import FeaturesSection from "@/components/FeaturesSection";
-import HeroSection from "@/components/HeroSection";
-import IntersectionBar from "@/components/IntersectionBar";
+import FeaturesSection from "@/components/Landing/FeaturesSection";
+import HeroSection from "@/components/Landing/HeroSection";
+import IntersectionBar from "@/components/Landing/IntersectionBar";
 
 export default function LandingPage() {
   return (
