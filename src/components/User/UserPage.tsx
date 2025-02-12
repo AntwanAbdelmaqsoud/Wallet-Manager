@@ -11,6 +11,7 @@ import AddWalletModal from "./AddWalletModal";
 import { FaTrash } from "react-icons/fa";
 import { Wallet } from "@/types/wallet";
 import { TransactionResponse } from "@/types/transaction";
+import MakeTransactionModal from "./MakeTransactionModal";
 
 export default function UserPage() {
   const queryClient = useQueryClient();
@@ -136,6 +137,7 @@ export default function UserPage() {
             walletsData.data.wallets.length > 0 ? (
               walletsData.data.wallets.map((wallet: Wallet) => (
                 <div
+                  key={crypto.randomUUID()}
                   className={`bg-gradient-to-br ${getBGClassByWalletType(
                     wallet.type
                   )}  text-white py-2 px-3 rounded-lg flex flex-col`}
@@ -181,7 +183,7 @@ export default function UserPage() {
         <div className="flex w-full items-center justify-between mb-3">
           <h1 className="text-lg rounded font-semibold">Transactions</h1>
           {walletsData && walletsData.data.wallets.length > 0 && (
-            <Button>Make Transaction</Button>
+            <MakeTransactionModal wallets={walletsData.data.wallets} />
           )}
         </div>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">

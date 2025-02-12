@@ -93,7 +93,10 @@ const AddWalletModal = ({ disable }: { disable: boolean }) => {
         Add Wallet
       </Button>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="text-white">
+        <DialogContent
+          aria-describedby="Dialog For creating a waller"
+          className="text-white"
+        >
           <DialogHeader>
             <DialogTitle>Add a New Wallet</DialogTitle>
           </DialogHeader>

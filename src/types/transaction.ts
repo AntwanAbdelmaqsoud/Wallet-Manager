@@ -1,9 +1,9 @@
-enum transactionType {
+export enum transactionType {
   credit = "credit",
   debit = "debit",
 }
 
-enum categoryType {
+export enum categoryType {
   salary = "Salary",
   freelance = "Freelance",
   gift = "Gift",
@@ -31,4 +31,13 @@ export type TransactionResponse = {
   data: {
     transactions: Transaction[];
   };
+};
+
+export type TransactionPost = {
+  id: string;
+  walletId: string;
+  userId: string;
+  type: transactionType;
+  category: categoryType;
+  amount: number;
 };
