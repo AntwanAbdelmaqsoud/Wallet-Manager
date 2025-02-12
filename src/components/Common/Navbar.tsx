@@ -35,7 +35,7 @@ const Navbar = () => {
             </Button>
           </nav>
           <div className="w-full h-full flex flex-col items-start space-y-10">
-            <Link to="/">
+            <Link to={user ? `/${user._id}` : "/"}>
               <Button
                 variant="ghost"
                 className="text-lg"
@@ -73,7 +73,7 @@ const Navbar = () => {
           <h1>Wallet</h1> <h1>Manager</h1>
         </div>
         <div className="hidden space-x-4 sm:flex">
-          <Link to="/">
+          <Link to={user ? `/${user._id}` : "/"}>
             <Button variant="ghost">
               <FaHome />
               HOME
