@@ -97,16 +97,13 @@ const Navbar = () => {
           {user ? (
             <Popover>
               <PopoverTrigger>
-                <Button
-                  size={"icon"}
-                  className="rounded-full border border-gray-400 cursor-pointer"
-                >
+                <div className="rounded-full border border-gray-400 cursor-pointer h-9 w-9">
                   <img
                     className="rounded-full"
                     src={user.picture}
                     referrerPolicy="no-referrer"
                   />
-                </Button>
+                </div>
               </PopoverTrigger>
               <PopoverContent className="w-fit">
                 <Button variant={"ghost"} onClick={logout}>

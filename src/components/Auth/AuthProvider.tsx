@@ -44,7 +44,10 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const login = async (data: googleLoginData) => {
     setIsAuthenticated(true);
     setUser(data.user);
-    setToken(data.accessToken);
+    // setToken(data.accessToken);
+    const accessToken: string =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnb29nbGVJZCI6IjEwNTg5OTEyODAyOTY3NTUwMjE3NyIsImVtYWlsIjoiYW50d2FuYWJkZWxtYXFzb3VkOEBnbWFpbC5jb20iLCJ1c2VySWQiOiIxOTcwYTA4NC01ZjVmLTQ1YWQtYWE3NC0wMGYzNDRhMmI2ZWQiLCJpYXQiOjE3MzkzNjM4NDEsImV4cCI6MTczOTM5OTg0MX0.uQBfSeoeMLo01jafy6sV8OXpuaV8DPNmSb2MB0CO0qY";
+    setToken(accessToken);
   };
 
   const logout = () => {

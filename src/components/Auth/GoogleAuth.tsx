@@ -80,7 +80,7 @@ export default function GoogleAuth() {
               </p>
             </>
           ) : (
-            "HomePage"
+            "Google Login"
           )}
         </div>
       )}

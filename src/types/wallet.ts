@@ -5,3 +5,11 @@ export type Wallet = {
   type: string;
   userId: string;
 };
+
+export type WalletPost = {
+  id: string;
+  walletName: string;
+  currentBalance: number;
+  type: string;
+  userId: string;
+};

@@ -1,6 +1,6 @@
 enum transactionType {
-  credit = "CREDIT",
-  debit = "DEBIT",
+  credit = "credit",
+  debit = "debit",
 }
 
 enum categoryType {
@@ -25,4 +25,10 @@ export type Transaction = {
   type: transactionType;
   category: categoryType;
   amount: number;
+};
+
+export type TransactionResponse = {
+  data: {
+    transactions: Transaction[];
+  };
 };
